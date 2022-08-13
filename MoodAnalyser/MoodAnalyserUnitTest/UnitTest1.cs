@@ -5,6 +5,7 @@ namespace MoodAnalyserUnitTest
     [TestClass]
     public class UnitTest1
     {
+        [TestMethod]
         public void GivenSadMoodMessage_WhenAnalyseShouldReturnSad()
         {
             //Arrange
