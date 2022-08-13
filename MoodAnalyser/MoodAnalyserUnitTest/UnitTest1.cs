@@ -5,13 +5,14 @@ namespace MoodAnalyserUnitTest
     [TestClass]
     public class UnitTest1
     {
+        
         [TestMethod]
-        public void GivenSadMoodMessage_WhenAnalyseShouldReturnSad()
+        public void GivenAnyMoodMessage_WhenAnalyseShouldReturnHappy()
         {
             //Arrange
-            string message = "I am in Sad Mood";
+            string message = "I am in Any Mood";
             MoodAnalyser1 analyser = new MoodAnalyser1(message);
-            string expected = "SAD";
+            string expected = "HAPPY";
 
             //Act
             string actual = analyser.analyseMood();
@@ -19,8 +20,6 @@ namespace MoodAnalyserUnitTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
-       
     }
 
 
