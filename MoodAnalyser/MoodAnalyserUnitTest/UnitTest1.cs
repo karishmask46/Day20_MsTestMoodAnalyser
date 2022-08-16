@@ -10,9 +10,9 @@ namespace MoodAnalyserUnitTest
         public void GivenAnyMoodMessage_WhenAnalyseShouldReturnHappy()
         {
             //Arrange
-            string message = null;
-            MoodAnalyser1 analyser = new MoodAnalyser1();
-            string expected = "Mood should not be Null";
+            string message = "";
+            MoodAnalyser1 analyser = new MoodAnalyser1(message);
+            string expected = "Mood should not be Empty";
 
             //Act
             string actual = analyser.analyseMood();
