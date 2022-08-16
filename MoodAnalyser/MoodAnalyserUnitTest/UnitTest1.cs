@@ -9,16 +9,16 @@ namespace MoodAnalyserUnitTest
         [TestMethod]
         public void GivenAnyMoodMessage_WhenAnalyseShouldReturnHappy()
         {
-            MoodAnalyser1 analyser = new MoodAnalyser1();
-            string message = "I am in Sad Mood";
-            string expected = "SAD";
+            //Arrange
+            string message = "";
+            MoodAnalyser1 analyser = new MoodAnalyser1(message);
+            string expected = "Mood should not be empty";
 
             //Act
-            string actual = analyser.analyseMood(message);
+            string actual = analyser.analyseMood();
 
             //Assert
             Assert.AreEqual(expected, actual);
-
         }
     }
 
