@@ -8,21 +8,25 @@ namespace MoodAnalyser
 {
     public class MoodAnalyser1
     {
-        public string message = null;
+        public string message;
+        public MoodAnalyser1(string message)
+        {
+            this.message = message;
+        }
 
         public string analyseMood()
         {
             try
             {   //"null"==""
                 if (message == null)
-                {
+
                     throw new NullReferenceException();
-                }
-                if (this.message.Equals(string.Empty))  // ""==null
-                {
+
+                else if (this.message.Equals(string.Empty))  // ""==null
+                                                             // 
                     throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "Mood should not be empty");
-                }
-                if (this.message.Contains("sad"))
+
+                else if (this.message.Contains("sad"))
                     return "SAD";
                 else
                     return "HAPPY";
@@ -30,6 +34,10 @@ namespace MoodAnalyser
             catch (NullReferenceException obj)
             {
                 return ("HAPPY");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                return "Mood should not be empty";
             }
             finally
             {
