@@ -11,9 +11,9 @@ namespace MoodAnalyserUnitTest
         {
             //Arrange
             //string message ="";
-            string expected = "Class not found";
+            string expected = "Constructor is not found";
             //Act
-            string actual = (string)MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.MoodAnalyser1", "MoodAnalyser1");
+            string actual = (string)MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.MoodAnalyser1", "MoodAnalyser");
             //Assert
             //expected.Equals(obj);
             Assert.AreEqual(expected, actual);
