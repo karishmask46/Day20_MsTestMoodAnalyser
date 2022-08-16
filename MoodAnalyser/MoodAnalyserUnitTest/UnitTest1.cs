@@ -10,15 +10,11 @@ namespace MoodAnalyserUnitTest
         public void GivenAnyMoodMessage_WhenAnalyseShouldReturnHappy()
         {
             //Arrange
-            string message = "";
-            MoodAnalyser1 analyser = new MoodAnalyser1(message);
-            string expected = "Mood should not be Empty";
-
+            object expected = new MoodAnalyser1();
             //Act
-            string actual = analyser.analyseMood();
-
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.MoodAnalyser1");
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(expected, obj);
         }
 
     }

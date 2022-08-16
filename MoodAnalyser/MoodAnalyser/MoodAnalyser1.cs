@@ -9,11 +9,6 @@ namespace MoodAnalyser
     public class MoodAnalyser1
     {
         public string message;
-        
-        public MoodAnalyser1(string message)
-        {
-            this.message = message;
-        }
 
         public string analyseMood()
         {
@@ -43,7 +38,7 @@ namespace MoodAnalyser
             //    Console.WriteLine("This code will always execute irrespective of exception came or not!!!!");
             //}
         }
-
     }
 }
+
 
