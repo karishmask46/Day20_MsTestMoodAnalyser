@@ -10,11 +10,13 @@ namespace MoodAnalyserUnitTest
         public void GivenAnyMoodMessage_WhenAnalyseShouldReturnHappy()
         {
             //Arrange
-            object expected = new MoodAnalyser1();
+            //string message ="";
+            string expected = "Class not found";
             //Act
-            object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.MoodAnalyser1");
+            string actual = (string)MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.MoodAnalyser1", "MoodAnalyser1");
             //Assert
-            Assert.AreNotEqual(expected, obj);
+            //expected.Equals(obj);
+            Assert.AreEqual(expected, actual);
         }
 
     }

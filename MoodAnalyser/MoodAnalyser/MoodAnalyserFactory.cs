@@ -3,17 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MoodAnalyser
 {
         public class MoodAnalyserFactory
         {
-            public static object CreateMoodAnalyser(string className)
+        public static object CreateMoodAnalyser(string className, string constructorName)
+        {
+            string pattern = @"." + constructorName + "$";//.MoodAnalyser$
+            Match result = Regex.Match(className, pattern);
+            try
             {
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                Type MoodAnalyserType = assembly.GetType(className);
-                return Activator.CreateInstance(MoodAnalyserType);
+                if (result.Success)
+                {
+                    try
+                    {
+                        Assembly executing = Assembly.GetExecutingAssembly();
+                        Type MoodAnalyserType = executing.GetType(className);
+                        return Activator.CreateInstance(MoodAnalyserType);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        Console.WriteLine("Your input is not valid");
+                        throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "Class not found");
+                    }
+                }
+                else
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "Constructor is not found");
+                }
             }
+            catch (MoodAnalyserCustomException ex)
+            {
+                return ex.Message;
+            }
+            return null;
         }
+    }
 }
+
